@@ -93,7 +93,7 @@ void CBinaryHeap::Insert(Node_t * LeafNodePushed) {
         Heap[HeapTail].Value = LeafNodePushed->Value;
         Heap[HeapTail].Key = LeafNodePushed->Key;
         HeapTail += 1;
-    } else if ( HeapTail > 0 ) {
+    } else if ( HeapTail > 0 && HeapTail < HeapCapacity ) {
         Heap[HeapTail].Value = LeafNodePushed->Value;
         Heap[HeapTail].Key = LeafNodePushed->Key;
         HeapTail += 1;            
@@ -123,7 +123,7 @@ void CBinaryHeap::Extract(Node_t* RootNodePopped) {
     //case if the heap is empty, node popped will be NULL
     if( HeapTail == 0 ) {
         RootNodePopped = 0;
-    } else if ( HeapTail > 0 ) {
+    } else if ( HeapTail > 0 && HeapTail <= HeapCapacity ) {
         RootNodePopped->Key = Heap[0].Key;
         RootNodePopped->Value = Heap[0].Value;
         
